@@ -1,3 +1,10 @@
+# Author:Zebin Huan
+# Date：2019/07/22
+import vrep
+import time
+
+
+
 def toPage(pageNum):
     '''
     # toPage To the new VREP page
@@ -40,11 +47,11 @@ def start(clientID,timeout,step):
 
     i = 0
     ur5ready = 0
-    while (i < obj.TIMEOUT and ur5ready == 0):
+    while (i < timeout and ur5ready == 0):
         i = i + 1
         [res, ur5ready] = vrep.simxGetIntegerSignal(clientID,'UR5READY',vrep.simx_opmode_blocking);
         vrchk(res)
-        pause(step)
+        time.sleep(step)
 
     if i>= obj.TIMEOUT:
         print('An error occurred in your V-REP server')
@@ -72,20 +79,11 @@ def wait(clientID,timeout,step):
     ticks = j
     return ticks
 
-
-def vrchk(res, buffer):
+def vrchk(res):
     '''
     # Checks VREP return code. Set buffer to 1 if you are reading from a buffered
     # call
     '''
-    inputVar = func.__code__.co_argcount
-
-    if inputVar < 2:
-        buffer = false
-
-    if inputVar < 1:
-        print("error：Missing arguments.")
-        return
 
     expl = 'Undefined error'
 
@@ -111,7 +109,47 @@ def vrchk(res, buffer):
     elif res == vrep.simx_error_initialize_error_flag:
         expl = 'simxStart was not yet called'
 
-    print('Remote API function call returned with error code: %d. Explanation: %s.\n', res, expl)
+    print('Remote API function call returned with error code: %d. Explanation: %s.\n'% (res,expl))
+
+# def vrchk(res, buffer):
+#     '''
+#     # Checks VREP return code. Set buffer to 1 if you are reading from a buffered
+#     # call
+#     '''
+#     inputVar = func.__code__.co_argcount
+#
+#     if inputVar < 2:
+#         buffer = false
+#
+#     if inputVar < 1:
+#         print("error：Missing arguments.")
+#         return
+#
+#     expl = 'Undefined error'
+#
+#     if res == vrep.simx_error_noerror:
+#         #noting to say
+#         return
+#     elif res == vrep.simx_error_novalue_flag:
+#         if buffer:
+#             #no problem to report
+#             return
+#         else:
+#             expl = 'There is no command reply in the input buffer. This should not always be considered as an error, depending on the selected operation mode'
+#     elif res == vrep.simx_error_timeout_flag:
+#         expl = 'The function timed out (probably the network is down or too slow)'
+#     elif res == vrep.simx_error_illegal_opmode_flag:
+#         expl = 'The specified operation mode is not supported for the given function'
+#     elif res == vrep.simx_error_remote_error_flag:
+#         expl = 'The function caused an error on the server side (e.g. an invalid handle was specified)'
+#     elif res == vrep.simx_error_split_progress_flag:
+#         expl = 'The communication thread is still processing previous split command of the same type'
+#     elif res == vrep.simx_error_local_error_flag:
+#         expl = 'The function caused an error on the client side'
+#     elif res == vrep.simx_error_initialize_error_flag:
+#         expl = 'simxStart was not yet called'
+#
+#     print('Remote API function call returned with error code: %d. Explanation: %s.\n', res, expl)
 
 
 def toVREPQuat(unitQuat):
@@ -121,10 +159,10 @@ def toVREPQuat(unitQuat):
     # VREPQuat: the quaternion <x,y,z,s>
     '''
     VREPQuat = numpy.zeros(4)
-    VREPQuat(4) = unitQuat(1)
-    VREPQuat(1) = unitQuat(2)
-    VREPQuat(2) = unitQuat(3)
-    VREPQuat(3) = unitQuat(4)
+    VREPQuat[4] = unitQuat[1]
+    VREPQuat[1] = unitQuat[2]
+    VREPQuat[2] = unitQuat[3]
+    VREPQuat[3] = unitQuat[4]
     return VREPQuat
 
 def toMATLABQuat(vrepQuat):
@@ -133,11 +171,11 @@ def toMATLABQuat(vrepQuat):
     # wxyzQuat: the <s,x,y,z> quaternion
     # VREPQuat: the quaternion <x,y,z,s>
     '''
-    sxyzQuat = numpy.zeros(4)
-    sxyzQuat(1) = vrepQuat(4)
-    sxyzQuat(2) = vrepQuat(1)
-    sxyzQuat(3) = vrepQuat(2)
-    sxyzQuat(4) = vrepQuat(3)
+    sxyzQuat = numpy.zeros[4]
+    sxyzQuat[1] = vrepQuat[4]
+    sxyzQuat[2] = vrepQuat[1]
+    sxyzQuat[3] = vrepQuat[2]
+    sxyzQuat[4] = vrepQuat[3]
     return sxyzQuat
 
 

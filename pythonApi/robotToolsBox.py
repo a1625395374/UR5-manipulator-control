@@ -1,3 +1,8 @@
+# Author:Zebin Huan
+# Date：2019/07/22
+import vrep
+
+
 def ur5MoveToJointPosition(clientID, targetPositions ):
     '''
     # ur5MoveToJointPosition Reflexes Motion Library - Joint space
@@ -10,7 +15,7 @@ def ur5MoveToJointPosition(clientID, targetPositions ):
     vrep.simxPauseCommunication(clientID, 0)
     wait()
 
-def ur5MoveToConfiguration(clientID,targetPosition,targetQuaternion)
+def ur5MoveToConfiguration(clientID,targetPosition,targetQuaternion):
     '''
     # ur5MoveToConfiguration Reflexxes Motion Library - Move by ik group
     # targetPosition: 1 x 3 vector, the target xyz position
