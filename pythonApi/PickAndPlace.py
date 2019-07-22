@@ -21,10 +21,12 @@ print("Connection success!")
 
 #-------------------------Configuration
 jointNum = 6
-
+objectNum = 2
 #--------Get UR5's handles
 jointNames = ('UR5_joint1','UR5_joint2','UR5_joint3','UR5_joint4','UR5_joint5','UR5_joint6')
+objectNames = ('Toy1','Toy2')
 HandleUr5Joints = np.zeros((jointNum,), dtype=np.int) # 注意是整型
+HandleObjects = np.zeros((objectNum,), dtype=np.int) # 注意是整型
 
 for i in range(jointNum):
     res, returnJointHandle = vrep.simxGetObjectHandle(clientID, jointNames(i), vrep.simx_opmode_blocking)
@@ -32,52 +34,61 @@ for i in range(jointNum):
     vrchk(res)
 end
 
+#--------Get objects' handles
+for i in range(objectNum):
+    res, returnObjectHandle = vrep.simxGetObjectHandle(clientID, objectNames(i), vrep.simx_opmode_blocking)
+    HandleObjects[i] = returnObjectHandle
+    vrchk(res)
+end
 
 
+#--------Get the objects' position
+
+#这里存在返回值与矩阵加法运算的问题
+res, initPosition = vrep.simxGetObjectPosition(clientID, HandleObjects(1), obj.vrep.simx_opmode_blocking)
+initPosition = initPosition + array([0,0,0.002])
+vrchk(res)
+
+res, targetPosition = vrep.simxGetObjectPosition(clientID, HandleObjects(1), obj.vrep.simx_opmode_blocking)
+initPosition = targetPosition + array([0,0,0.005])
+vrchk(res)
 
  
-% Get the objects' handles
-icecube = icecube.getObjectHandle('Toy1');
-icecube = icecube.getObjectHandle('Toy2');
+#--------Move it
  
-% Get the objects' position
-initPosition = icecube.getObjectPosition('Toy2') + [0,0,0.002];
-targetPosition = icecube.getObjectPosition('Toy1') + [0,0,0.05];
+#--------Start simulation
+start(clientID,timeout,step)
+#！！！考虑用全局变量或者是结构体优化
  
-%% Move it
  
-% Start simulation
-icecube.start();
+#--------Move to initial configuration
+initConfig = array([0, pi/8, pi/2-pi/8, 0, -pi/2, 0])
+ur5MoveToJointPosition(clientID,initConfig)
+tempQuat = ur5GetIKTipQuaternion(icecube)
+time.sleep(1)
  
-% Move to initial configuration
-initConfig = [0, pi/8, pi/2-pi/8, 0, -pi/2, 0];
-ur5MoveToJointPosition(icecube,initConfig);
-tempQuat = ur5GetIKTipQuaternion(icecube);
-pause(1);
+
+#--------Move to initPosition
+ur5MoveToConfiguration(clientID,initPosition,tempQuat)
+time.sleep(1)
+toPage(clientID,1)
+time.sleep(1)
+
+#--------Close the gripper
+rg2Action(clientID,true)
+time.sleep(0.5)
+
+#--------Move to targetPosition
+ur5MoveToConfiguration(clientID,targetPosition,tempQuat)
+time.sleep(1)
  
-% Move to initPosition
-ur5MoveToConfiguration(icecube,initPosition,tempQuat);
-pause(1);
-icecube.toPage(1);
-pause(1);
+#--------Open the gripper
+rg2Action(icecube,false)
+time.sleep(1)
+toPage(clientID,1)
+time.sleep(1)
  
-% Close the gripper
-rg2Action(icecube,true);
-pause(0.5);
+#--------Stop and delete
  
-% Move to targetPosition
-ur5MoveToConfiguration(icecube,targetPosition,tempQuat);
-pause(1);
- 
-% Open the gripper
-rg2Action(icecube,false);
-pause(1);
-icecube.toPage(0);
-pause(1);
- 
-%% Stop and delete
- 
-icecube.stop();
-icecube.delete();
- 
-clear ans
+stop(clientID)
+delete(clientID)
