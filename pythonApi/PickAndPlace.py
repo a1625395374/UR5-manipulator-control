@@ -35,18 +35,6 @@ end
 
 
 
-obj.handles.ur5Joints = ur5Joints;
-
-
-
-
-
-
-
-
-
-
-
  
 % Get the objects' handles
 icecube = icecube.getObjectHandle('Toy1');
