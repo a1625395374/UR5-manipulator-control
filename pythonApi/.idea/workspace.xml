@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="582b0aa6-7e58-490c-b2f6-b466ae5c1bad" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../V-REP_RemoteApiOfMatlab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/jcobDemoPython.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonV-REP_Demo/.idea/PythonV-REP_Demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/libraries/R_User_Library.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonV-REP_Demo/.idea/libraries/R_User_Library.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonV-REP_Demo/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonV-REP_Demo/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonV-REP_Demo/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/remoteApi.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonV-REP_Demo/remoteApi.dylib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/vrep.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonV-REP_Demo/vrep.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/vrepConst.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonV-REP_Demo/vrepConst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PythonV-REP_Demo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonV-REP_Demo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +16,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/simpleTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-210" />
+            <state relative-caret-position="300">
+              <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -61,6 +54,16 @@
               <item name="PythonApi" type="b2602c69:ProjectViewProjectNode" />
               <item name="PythonApi" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="PythonApi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PythonApi" type="462c0819:PsiDirectoryNode" />
+              <item name="robotTools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PythonApi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PythonApi" type="462c0819:PsiDirectoryNode" />
+              <item name="vrepOriginalDemo" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -69,6 +72,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -126,18 +130,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563872798300</updated>
-      <workItem from="1563872801096" duration="499000" />
+      <workItem from="1563872801096" duration="1876000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="499000" />
+    <option name="totallyTimeSpent" value="1876000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1239" height="777" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24979115" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24979115" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -147,7 +152,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329927" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329927" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -170,7 +175,9 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/simpleTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210" />
+        <state relative-caret-position="300">
+          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+        </state>
       </provider>
     </entry>
   </component>
