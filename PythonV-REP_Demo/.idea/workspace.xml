@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94c26bfe-d3b1-4d01-bdf8-a38ee7fdc121" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../V-REP_RemoteApiOfMatlab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/jcobDemoPython.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonV-REP_Demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/libraries/R_User_Library.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/remoteApi.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/remoteApi.dylib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/vrep.py" beforeDir="false" afterPath="$PROJECT_DIR$/vrep.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jcobDemoPython/vrepConst.py" beforeDir="false" afterPath="$PROJECT_DIR$/vrepConst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BasicDynamicSyn.py" beforeDir="false" afterPath="$PROJECT_DIR$/BasicDynamicSyn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UR5DynamicControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/UR5DynamicControl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/UR5PegInHole2.ttt" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/UR5PegInHole2.ttt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +27,17 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/UR5NoSynDynamic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -55,13 +57,14 @@
         <option value="$PROJECT_DIR$/1.py" />
         <option value="$PROJECT_DIR$/VisionSensorDemo.py" />
         <option value="$PROJECT_DIR$/VisionSensorDemo.py" />
+        <option value="$PROJECT_DIR$/UR5NoSynDynamic.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="24" />
-    <option name="y" value="26" />
-    <option name="width" value="1239" />
+    <option name="x" value="-19" />
+    <option name="y" value="23" />
+    <option name="width" value="1234" />
     <option name="height" value="777" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -104,7 +107,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.jcobDemo">
+  <component name="RunManager" selected="Python.UR5NoSynDynamic">
+    <configuration name="UR5NoSynDynamic" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PythonV-REP_Demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UR5NoSynDynamic.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="VisionSensorDemo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PythonV-REP_Demo" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -173,6 +198,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.UR5NoSynDynamic" />
         <item itemvalue="Python.jcobDemo" />
         <item itemvalue="Python.VisionSensorDemo" />
         <item itemvalue="Python.main" />
@@ -193,6 +219,7 @@
       <workItem from="1563868066943" duration="1287000" />
       <workItem from="1563869644575" duration="1385000" />
       <workItem from="1563873093810" duration="400000" />
+      <workItem from="1564736798061" duration="203000" />
     </task>
     <servers />
   </component>
@@ -200,14 +227,15 @@
     <option name="totallyTimeSpent" value="7444000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="24" y="26" width="1239" height="777" extended-state="0" />
+    <frame x="-19" y="23" width="1234" height="777" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17126149" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17365772" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38540146" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38540146" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -232,6 +260,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PythonV_REP_Demo$jcobDemo.coverage" NAME="jcobDemo Coverage Results" MODIFIED="1563873253556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonV_REP_Demo$UR5NoSynDynamic.coverage" NAME="UR5NoSynDynamic Coverage Results" MODIFIED="1564736999605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/jcobDemoPython$main.coverage" NAME="main Coverage Results" MODIFIED="1563798151889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonV_REP_Demo$VisionSensorDemo.coverage" NAME="VisionSensorDemo Coverage Results" MODIFIED="1563870881449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

@@ -3,11 +3,11 @@
 
 """
 PegInHole
-use the scene：UR5PegInHole2.ttt
+use the scene：meshImport.ttt
 
 @Author: Zane
 @Contact: ely.hzb@gmail.com
-@File: PegInHole.py
+@File: UR5DynamicControl.py
 @Time: 2019-07-29 15:55
 """
 import vrep
@@ -38,6 +38,13 @@ while True:
         print("Failed connecting to remote API server!")
 print("Connection success!")
 
+# 设置仿真步长，为了保持API端与V-rep端相同步长
+vrep.simxSetFloatingParameter(clientID, vrep.sim_floatparam_simulation_time_step, tstep, vrep.simx_opmode_oneshot)
+# 然后打开同步模式
+vrep.simxSynchronous(clientID, True)
+#开启仿真
+vrep.simxStartSimulation(clientID, vrep.simx_opmode_oneshot)
+
 
 jointHandle = np.zeros((jointNum,), dtype=np.int) # 注意是整型
 for i in range(jointNum):
@@ -55,9 +62,17 @@ for i in range(jointNum):
      _, jpos = vrep.simxGetJointPosition(clientID, jointHandle[i], vrep.simx_opmode_streaming)
      jointConfig[i] = jpos
 
+lastCmdTime=vrep.simxGetLastCmdTime(clientID)  # 记录当前时间
+vrep.simxSynchronousTrigger(clientID)  # 让仿真走一步
+
 
 # 开始仿真
 while vrep.simxGetConnectionId(clientID) != -1:
+    currCmdTime=vrep.simxGetLastCmdTime(clientID)  # 记录当前时间
+    dt = currCmdTime - lastCmdTime # 记录时间间隔，用于控制
+    lastCmdTime=currCmdTime    # 记录当前时间
+    vrep.simxSynchronousTrigger(clientID)  # 进行下一步
+    vrep.simxGetPingTime(clientID)    # 使得该仿真步走完
     #仿真进行完成读取状态
     # 读取当前的状态值，之后都用buffer形式读取
     for i in range(jointNum):
@@ -66,44 +81,26 @@ while vrep.simxGetConnectionId(clientID) != -1:
         jointConfig[i] = jpos
         
     #关节空间控制
-    # 控制命令需要同时方式，故暂停通信，用于存储所有控制命令一起发送
-    initConfig = [0, 22.5, 67.5, 0, -90, 0]
-    #vrep.simxPauseCommunication(clientID, True)
+    #initConfig = [0, 22.5, 67.5, 0, -90, 0]
+
+    targetPos1=[90*math.pi/180,90*math.pi/180,-90*math.pi/180,90*math.pi/180,90*math.pi/180,90*math.pi/180]
+  
+    vrep.simxPauseCommunication(clientID, True)
     for i in range(jointNum):
-        vrep.simxSetJointTargetPosition(clientID, jointHandle[i], initConfig[i] / RAD2DEG, vrep.simx_opmode_oneshot)
-    #vrep.simxPauseCommunication(clientID, False)
-    #工作空间
-
-
-
-
-
-
-
-
-#function sysCall_threadmain()
-#    jointHandles={-1,-1,-1,-1,-1,-1}
-#    for i=1,6,1 do
-#        jointHandles[i]=sim.getObjectHandle('UR5_joint'..i)
-#    end
+        vrep.simxSetJointTargetPosition(clientID, jointHandle[i],targetPos1[i] , vrep.simx_opmode_oneshot)
+    vrep.simxPauseCommunication(clientID, False)
+# 
+#    targetPos2=[-90*math.pi/180,45*math.pi/180,90*math.pi/180,135*math.pi/180,90*math.pi/180,90*math.pi/180]
+#   
+#   # vrep.simxPauseCommunication(clientID, True)
+#    for i in range(jointNum):
+#        vrep.simxSetJointTargetPosition(clientID, jointHandle[i],targetPos2[i] , vrep.simx_opmode_oneshot)
+#   # vrep.simxPauseCommunication(clientID, False)
+#    
+#  #  vrep.simxPauseCommunication(clientID, True)
+#    targetPos3=[0,0,0,0,0,0]
+#    for i in range(jointNum):
+#        vrep.simxSetJointTargetPosition(clientID, jointHandle[i],targetPos3[i] , vrep.simx_opmode_oneshot)
+#    vrep.simxPauseCommunication(clientID, False)
 #
-#    -- Set-up some of the RML vectors:
-#    vel=180
-#    accel=40
-#    jerk=80
-#    currentVel={0,0,0,0,0,0,0}
-#    currentAccel={0,0,0,0,0,0,0}
-#    maxVel={vel*math.pi/180,vel*math.pi/180,vel*math.pi/180,vel*math.pi/180,vel*math.pi/180,vel*math.pi/180}
-#    maxAccel={accel*math.pi/180,accel*math.pi/180,accel*math.pi/180,accel*math.pi/180,accel*math.pi/180,accel*math.pi/180}
-#    maxJerk={jerk*math.pi/180,jerk*math.pi/180,jerk*math.pi/180,jerk*math.pi/180,jerk*math.pi/180,jerk*math.pi/180}
-#    targetVel={0,0,0,0,0,0}
-#
-#    targetPos1={90*math.pi/180,90*math.pi/180,-90*math.pi/180,90*math.pi/180,90*math.pi/180,90*math.pi/180}
-#    sim.rmlMoveToJointPositions(jointHandles,-1,currentVel,currentAccel,maxVel,maxAccel,maxJerk,targetPos1,targetVel)
-#
-#    targetPos2={-90*math.pi/180,45*math.pi/180,90*math.pi/180,135*math.pi/180,90*math.pi/180,90*math.pi/180}
-#    sim.rmlMoveToJointPositions(jointHandles,-1,currentVel,currentAccel,maxVel,maxAccel,maxJerk,targetPos2,targetVel)
-#
-#    targetPos3={0,0,0,0,0,0}
-#    sim.rmlMoveToJointPositions(jointHandles,-1,currentVel,currentAccel,maxVel,maxAccel,maxJerk,targetPos3,targetVel)
-#end
+
