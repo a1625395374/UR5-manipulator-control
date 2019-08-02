@@ -112,6 +112,32 @@ while j <= TIMEOUT and signal != 0:
 
 ticks = j
 
+
+
+
+targetPosition[2] = targetPosition[2] - 0.05
+time.sleep(2)
+
+vrep.simxPauseCommunication(clientID, 1)
+vrep.simxSetIntegerSignal(clientID, 'ICECUBE_0', 21, vrep.simx_opmode_oneshot)
+for i in range(1, 4):
+    vrep.simxSetFloatSignal(clientID, 'ICECUBE_' + str(i), targetPosition[i - 1], vrep.simx_opmode_oneshot)
+
+for i in range(4, 8):
+    vrep.simxSetFloatSignal(clientID, 'ICECUBE_' + str(i), tipQuat[i - 4], vrep.simx_opmode_oneshot)
+
+vrep.simxPauseCommunication(clientID, 0)
+
+j = 0
+signal = 99
+while j <= TIMEOUT and signal != 0:
+    j = j + 1
+    errorCode, signal = vrep.simxGetIntegerSignal(clientID, 'ICECUBE_0', vrep.simx_opmode_blocking)
+    # obj.vrchk(res);
+    time.sleep(step)
+
+ticks = j
+
 # Stop simulation
 vrep.simxStopSimulation(clientID, vrep.simx_opmode_blocking)
 
