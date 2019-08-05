@@ -37,4 +37,4 @@ Open the "Scenes\UR5PegInHole.ttt" scene and run "UR5PegInHole.py".
 
 # Output :
 
-[![PegInHole.2019-08-05 14_33_43](/Users/mac/Library/Mobile Documents/com~apple~CloudDocs/markdown/V-REP/README.assets/PegInHole.2019-08-05 14_33_43.gif)](https://github.com/ManarArabi/Controlling-a-robot-in-vrep-by-python/blob/master/output.gif)
+[![PegInHole.2019-08-05 14_33_43](http://ww4.sinaimg.cn/large/006tNc79ly1g5ot171hzaj30y60u0k3r.jpg)](https://github.com/ManarArabi/Controlling-a-robot-in-vrep-by-python/blob/master/output.gif)
