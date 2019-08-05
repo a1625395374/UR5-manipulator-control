@@ -37,5 +37,5 @@ Open the "Scenes\UR5PegInHole.ttt" scene and run "UR5PegInHole.py".
 
 # Output :
 
-![PegInHole](/Users/mac/Library/Mobile Documents/com~apple~CloudDocs/markdown/V-REP/README.assets/e2eMut.gif)
+![PegInHole](https://s2.ax1x.com/2019/08/05/e2eMut.gif)
 
